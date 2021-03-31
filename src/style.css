@@ -54,10 +54,3 @@ footer p {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-
-.lineup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
