@@ -15,16 +15,20 @@ function App() {
     });
   }
 
+  function deleteNotes(id) {
+    console.log("Delete was triggered");
+  }
+
   return (
     <div>
       <Header />
       <CreateArea onAdd={addNote} />
       {notas.map((notasItem) => {
-        return <Note title={notasItem.title} content={notasItem.content} />;
+        return <Note title={notasItem.title} content={notasItem.content} onDelete={deleteNotes} />;
       })}
 
       {notes.map((note) => (
-        <Note key={note.id} title={note.title} content={note.content} />
+        <Note key={note.id} title={note.title} content={note.content} onDelete={deleteNotes} />
       ))}
       <Footer />
     </div>
