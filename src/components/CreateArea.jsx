@@ -4,6 +4,8 @@ import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
 
 function CreateArea(props) {
+  const [isExpanded, setExpande] = useState(false);
+
   const [note, setNote] = useState({
     title: "",
     content: "",
@@ -29,12 +31,16 @@ function CreateArea(props) {
     });
   }
 
+  function expand() {
+    setExpande(true);
+  }
+
   return (
     <div>
       <form className="create-note">
-        <input name="title" value={note.title} onChange={handleChange} placeholder="Title" />
-        <textarea name="content" value={note.content} onChange={handleChange} placeholder="Take a note..." rows="3" />
-        <Zoom in={true}>
+        {isExpanded ? <input name="title" value={note.title} onChange={handleChange} placeholder="Title" /> : null}
+        <textarea name="content" value={note.content} onClick={expand} onChange={handleChange} placeholder="Take a note..." rows={isExpanded ? 3 : 1} />
+        <Zoom in={isExpanded ? true : false}>
           <Fab onClick={submitNote}>
             <AddCircleIcon />
           </Fab>
